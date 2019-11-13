@@ -1,0 +1,30 @@
+<div class="col-md-12 xx">
+        <h1>Hi {{currentUser.firstName}}!</h1>
+        <h3>All registered users:</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>User Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.username}}</td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+              </table>
+        <p><a [routerLink]="['/']">Back</a></p>
+    </div>

@@ -1,0 +1,51 @@
+<ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            - <a (click)="deleteUser(user.id)">Delete</a>
+        </li>
+    </ul>
+<h1 class="mt-5">{{name}}</h1>
+<p><a [routerLink]="['/login']">Logout</a>-------------<a [routerLink]="['/users']">Users</a></p>
+<p><strong>Email: </strong> {{email}} </p>
+<p><strong>Address: </strong> {{address.street}}, {{address.city}}, {{address.province}} </p>
+
+<button (click)="toggleHobbies()">{{showHobbies ? "Hide Hobbies" : "Show Hobbies"}}</button>
+<div *ngIf="showHobbies">
+    <h3>Hobbies:</h3>
+    <ul>
+    <li *ngFor="let hobby of hobbies; let i = index">
+        {{hobby}} <button type="button" class="btn btn-danger btn-circle" (click)="deleteHobby()"><i class="fa fa-times"></i></button>
+    </li>
+    </ul>
+    <form (submit)="addHobby(hobby.value)">
+    <label>Add Hobby: </label><br />
+    <input type="text" #hobby/><br/>
+    </form>
+</div>
+
+<hr>
+
+<form>
+    <label>Name: </label><br />
+    <input class="form-control" type="text" name="name" [(ngModel)]="name" /><br/>
+    <label>Email: </label><br />
+    <input class="form-control" type="text" name="email" [(ngModel)]="email" /><br/>
+    <label>Street: </label><br />
+    <input class="form-control" type="text" name="address.street" [(ngModel)]="address.street" /><br/>
+    <label>City: </label><br />
+    <input class="form-control" type="text" name="address.city" [(ngModel)]="address.city" /><br/>
+    <label>Province: </label><br />
+    <input class="form-control" type="text" name="address.province" [(ngModel)]="address.province" /><br/>
+</form>
+
+<hr>
+
+<h2>Post</h2>
+<div *ngFor="let post of posts">
+    <h3>{{post.title}}</h3>
+    <div class="row">
+        <div class="col-sm-1">
+                <img src="{{post.body}}"/>
+        </div>
+    </div>
+</div>
